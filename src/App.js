@@ -1,26 +1,39 @@
-import React, { Component, PureComponent } from 'react';
-import P from './components/pureComponent';
+import React from 'react';
+import Refs from './components/refs';
 
-class App extends Component {
+const ARRAY = [0,1,2,3,4,5];
+
+class App extends React.PureComponent {
   constructor(){
     super();
     this.state = {
-      a: 1
+      array: [...ARRAY],
+      c: 0
     };
   }
   change = () => {
-    const state = {...this.state};
-    state.a++;
+    // ARRAY.push(ARRAY.length);
+    // console.log(ARRAY);
+    // this.setState({array: [...ARRAY]});
 
-    this.setState(state);
+    let {c} = this.state;
+    c+=5;
+    this.setState({c});
   }
   render() {
+    // const content = [];
+    // for (let i of this.state.array){
+    //   content.push(<p key={i}>{i}</p>);
+    // }
     return (
       <div className="App">
-        <P
-          r={this.state.a}
-          change={this.change}
-        />
+        {/* {this.state.array.map((element, idx)=>{
+          return <span key={idx}>{element} </span>;
+        })} */}
+        {/* {this.state.c}
+        <br />
+        <button onClick={this.change}>change</button> */}
+        <Refs />
       </div>
     );
   }
